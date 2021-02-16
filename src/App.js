@@ -1,7 +1,16 @@
+import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const [currentTime, setCurrentTime] = useState(0);
+
+  useEffect(() => {
+    fetch('/time').then(res => res.json()).then(data => {
+      setCurrentTime(data.time)
+    });
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -17,19 +26,10 @@ function App() {
         >
           Learn React
         </a>
+        <p> the current time is {currentTime}.</p>
       </header>
     </div>
   );
 }
 
 export default App;
-
-// function Welcome(props) {
-//   return <h1>Hello, {props.name}</h1>;
-// }
-
-// const element = <Welcome name="Sara" />;
-// ReactDOM.render(
-//   element,
-//   document.getElementById('root')
-// );
