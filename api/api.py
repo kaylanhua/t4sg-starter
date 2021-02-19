@@ -17,7 +17,6 @@ def api_post():
         rev_string = req["name"][::-1]
         req["name"] = rev_string
         print(req["name"])
-        # req_reverse = req[::-1]
         return jsonify(name=req)
     if request.method == 'GET':
         return {

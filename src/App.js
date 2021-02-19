@@ -29,9 +29,13 @@ function App() {
     })
       .then(res => res.json())
       .then(res => {
-        console.log(res["name"])
+        setValue(res.name.name)
+        // setValue(res.name)
+      //   res.map((i) =>{
+      //     setValue(i.name)
+      //     // return ( <h1>{i.name}</h1> )
+      //  })
       });
-      // .then(res => console.log(res));
   }
 
   function handleValue(e) {
