@@ -28,7 +28,10 @@ function App() {
       body: JSON.stringify(data),
     })
       .then(res => res.json())
-      .then(res => console.log(res));
+      .then(res => {
+        console.log(res["name"])
+      });
+      // .then(res => console.log(res));
   }
 
   function handleValue(e) {

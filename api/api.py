@@ -8,13 +8,21 @@ from flask_cors import CORS;
 app = Flask(__name__)
 CORS(app)
 
+print("flask has started running!!!!!")
+
 @app.route('/test/', methods=['POST', 'GET'])
 def api_post():
     if request.method == 'POST':
         req = request.json
-        print(req)
+        rev_string = req["name"][::-1]
+        req["name"] = rev_string
+        print(req["name"])
         # req_reverse = req[::-1]
         return jsonify(name=req)
+    if request.method == 'GET':
+        return {
+			'test': 'test'
+		}
 
 
 @app.route('/', methods=['GET', 'POST'])
