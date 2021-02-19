@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Form } from './components/form';
+import Button from 'react-bootstrap/Button';
 
 function App() {
   const [currentTime, setCurrentTime] = useState(0);
@@ -11,21 +13,14 @@ function App() {
     });
   }, []);
 
-  const [placeholder, setPlaceholder] = useState('Hi');
-
-  useEffect(() => {
-    fetch('/hello').then(res => res.json()).then(data => {
-      setPlaceholder(data.result)
-    });
-  }, []);
-
   return (
     <div className="App">
-      <header className="App-header">
-        <button>Submit</button>
-        <p> the current time is {currentTime}.</p>
-        <p>Flask says {placeholder}</p>
-      </header>
+      <br/><br/><br/><br/><br/>
+      <h1>Starter Project</h1>
+      <p>The current time is {currentTime}</p>
+      <br/>
+      <Form/>
+      <Button>Get random fact</Button>
     </div>
   );
 }
