@@ -9,10 +9,12 @@ export class Form extends React.Component {
 
     handleChange = (event) => {
         this.setState({userInput: event.target.value});
+        console.log("this is handleChange");
+        console.log(event.target.value);
     }
 
     handleSubmit = (event) => {
-        fetch('/reverse', {
+        fetch('http://127.0.0.1:5000/reverse', {
             method: "POST",
             cache: "no-cache",
             headers: {
@@ -23,19 +25,23 @@ export class Form extends React.Component {
             return response.json()
         }).
         then(json => {
+            // console.log("this is handleSubmit")
             this.setState({output: json[0]})
-        })
+        });
+        console.log("this is handleSubmit");
+        console.log(this.state.userInput);
     }
 
     render() {
         return (
             <div>
                 <form onSubmit={this.handleSubmit} method='get'>
-                <p>String reversal:</p>
+                <h2>String reversal:</h2>
                 <input type="text"/>
                 <input type="submit" onChange={this.handleChange}/>
                 </form>
-                <p>{this.state.output}</p>
+                <br></br>
+                <p>The reversed string is {this.state.output}</p>
             </div>
         );
     }

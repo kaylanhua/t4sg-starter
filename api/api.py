@@ -3,8 +3,19 @@
 
 import time
 from flask import Flask, request, session, jsonify, redirect, render_template
+from flask_cors import CORS;
 
 app = Flask(__name__)
+CORS(app)
+
+@app.route('/test/', methods=['POST', 'GET'])
+def api_post():
+    if request.method == 'POST':
+        req = request.json
+        print(req)
+        # req_reverse = req[::-1]
+        return jsonify(name=req)
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -16,7 +27,7 @@ def index():
 def reverse():
 	if request.method == 'POST':
 		string = request.json
-		return string
+		return "post return"
 	if request.method == 'GET':
 		return {
 			'good': 'morning'
