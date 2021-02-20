@@ -3,9 +3,11 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Form } from './components/form';
 import Button from 'react-bootstrap/Button';
+import { Facts } from "./components/getFact"
 
 function App() {
   const [currentTime, setCurrentTime] = useState(0);
+  const axios = require('axios');
 
   useEffect(() => {
     fetch('/time').then(res => res.json()).then(data => {
@@ -30,11 +32,6 @@ function App() {
       .then(res => res.json())
       .then(res => {
         setValue(res.name.name)
-        // setValue(res.name)
-      //   res.map((i) =>{
-      //     setValue(i.name)
-      //     // return ( <h1>{i.name}</h1> )
-      //  })
       });
   }
 
@@ -48,11 +45,10 @@ function App() {
       <h1>t4sg starter project</h1>
       <p>the current time: {currentTime}.</p>
       <br/>
-      {/* <Form/> */}
       <br/>
       <h2>the api:</h2>
       
-      <Button>Get random fact</Button>
+      <Facts/>
 
       <br/>
       <br/>

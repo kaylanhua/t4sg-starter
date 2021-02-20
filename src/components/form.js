@@ -25,12 +25,13 @@ export class Form extends React.Component {
             return response.json()
         }).
         then(json => {
-            // console.log("this is handleSubmit")
             this.setState({output: json[0]})
         });
         console.log("this is handleSubmit");
         console.log(this.state.userInput);
     }
+
+    
 
     render() {
         return (
