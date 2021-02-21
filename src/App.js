@@ -46,7 +46,7 @@ function App() {
       <p>the current time: {currentTime}.</p>
       <br/>
       <br/>
-      <h2>the api:</h2>
+      <h2>the third-party api:</h2>
       
       <Facts/>
 
